@@ -46,6 +46,7 @@ public class PlayerController  {
         Lagalistar.setIndex(i * 2 + j);
         // skiptum yfir í LAGALISTI view
         ViewSwitcher.switchTo(View.LAGALISTI, false);
+        System.out.println("hi bitches");
     }
 
     /**
