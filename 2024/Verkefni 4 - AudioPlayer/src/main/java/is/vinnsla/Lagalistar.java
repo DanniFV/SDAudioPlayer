@@ -4,7 +4,7 @@ package is.vinnsla;
  *  T-póstur: ebba@hi.is
  *  Viðmótsforritun 2024
  *
- *  Vinnsluklasi fyrir lagalista. Geymir 2 lagalista
+ *  Vinnsluklasi fyrir lagalista. Geymir 44 lagalista
  *****************************************************************************/
 import java.io.IOException;
 
@@ -16,13 +16,13 @@ public class Lagalistar {
     public static final String NAFN = "listi";
     private static int index; // index á núverandi lagalista
 
-    private static final Lagalisti[] listar = new Lagalisti [2]; // lagalistar
+    private static final Lagalisti[] listar = new Lagalisti [4]; // lagalistar
 
     /**
      * Setur upp lagalistana. Les innihald þeirra úr skrám sem heita listi1.dat listi2.dat o.s.frv.
      */
     public static void frumstilla() {
-        for (int i = 0; i < listar.length; i++) {
+        for (int i = 0; i < listar.length; i ++) {
             listar[i] = new Lagalisti ();
             try {
                 listar[i].lesaLog(NAFN +(i+1)+ SUFFIX);

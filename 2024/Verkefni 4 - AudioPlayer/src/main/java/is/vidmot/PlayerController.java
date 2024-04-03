@@ -37,8 +37,9 @@ public class PlayerController  {
      * Atburðarhandler fyrir að velja lagalista. Sá lagalisti er settur og farið í senu fyrir þann lista
      * @param mouseEvent
      */
-    @FXML
-    protected void onVeljaLista(ActionEvent mouseEvent) {
+    //@FXML
+    /**
+        protected void onVeljaLista(ActionEvent mouseEvent) {
         // hvaða reitur var valinn
         int i = GridPane.getRowIndex((Node) mouseEvent.getSource());
         int j = GridPane.getColumnIndex((Node) mouseEvent.getSource());
@@ -47,6 +48,29 @@ public class PlayerController  {
         // skiptum yfir í LAGALISTI view
         ViewSwitcher.switchTo(View.LAGALISTI, false);
         System.out.println("hi bitches");
+    }
+     */
+    @FXML
+    protected void onVeljaLista(ActionEvent mouseEvent) {
+        // Check if the source of the event is laid out in a GridPane
+        Node source = (Node) mouseEvent.getSource();
+        Integer rowIndex = GridPane.getRowIndex(source);
+        Integer colIndex = GridPane.getColumnIndex(source);
+
+        // Check if both row and column indices are not null
+        if (rowIndex != null && colIndex != null) {
+            // Retrieve row and column indices
+            int i = rowIndex.intValue();
+            int j = colIndex.intValue();
+
+            // Perform your operations with i and j here
+            Lagalistar.setIndex(i * 2 + j);
+            ViewSwitcher.switchTo(View.LAGALISTI, false);
+            System.out.println("hi bitches");
+        } else {
+            // Handle the case where the node is not laid out in a GridPane
+            System.out.println("The source of the event is not laid out in a GridPane.");
+        }
     }
 
     /**
