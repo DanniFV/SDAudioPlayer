@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/player.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.vidmot.ListiController">
     <children>
                 <ImageView fx:id="fxMyndLagView" fitHeight="400.0" fitWidth="600.0" layoutX="-1.0" />
@@ -23,25 +22,63 @@
                 </HBox>
                 <VBox prefHeight="45.0" prefWidth="209.0">
                     <children>
-                        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="209.0" spacing="5">
+                        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="587.0">
                             <children>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBack" prefHeight="18.0" prefWidth="18.0" style="-fx-background-radius: 25;">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/Back.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBackFimmtan" prefHeight="24.0" prefWidth="27.0" style="-fx-background-radius: 30;">
+                           <graphic>
+                              <ImageView fx:id="fxBackFimmtan" fitHeight="28.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                  <Image url="@images/15sekBack.png" />
+                              </ImageView>
+                           </graphic>
+                        </Button>
                                 <VBox alignment="CENTER" prefHeight="70.0" prefWidth="168.0">
                                     <children>
+                                      <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onPlayPause" prefHeight="30.0" prefWidth="26.0" styleClass="image-button">
+                                          <graphic>
+                                              <ImageView fx:id="fxPlayPauseView" fitHeight="20" fitWidth="20">
+                                                  <Image url="@images/pause.png" />
+                                              </ImageView>
+                                          </graphic>
+                                      </Button>
                                         <ProgressBar fx:id="fxProgressBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="11.0" prefWidth="168.0" progress="0.03" />
                                     </children>
                                 </VBox>
-                                <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onPlayPause" prefHeight="30.0" prefWidth="26.0" styleClass="image-button">
-                                    <graphic>
-                                        <ImageView fx:id="fxPlayPauseView" fitHeight="20" fitWidth="20">
-                                            <Image url="@images/pause.png" />
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onForwardFimmtan" prefHeight="22.0" prefWidth="24.0" style="-fx-background-radius: 30;">
+                           <graphic>
+                              <ImageView fx:id="fxForwardFimmtan" fitHeight="30.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                  <Image url="@images/15sekForward.png" />
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onSkip" prefHeight="18.0" prefWidth="18.0" style="-fx-background-radius: 25;">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/Next.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                             </children>
                         </HBox>
                     </children>
                <VBox.margin>
-                  <Insets left="50.0" />
+                  <Insets />
                </VBox.margin>
                 </VBox>
             </children>

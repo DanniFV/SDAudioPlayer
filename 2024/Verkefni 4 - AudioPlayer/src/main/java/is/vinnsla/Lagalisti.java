@@ -52,7 +52,14 @@ public class Lagalisti {
      */
     public void naesti() {
         index = ++index % listi.size();
+    }
 
+    public void sidasti() {
+        if (index > 1) {
+            index -= 1;
+        } else {
+            index = 0;
+        }
     }
 
     // get og set aðferðir

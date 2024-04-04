@@ -24,6 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+import org.controlsfx.control.action.Action;
 
 
 public class ListiController  {
@@ -114,6 +115,31 @@ public class ListiController  {
         ViewSwitcher.switchTo(View.HEIMA, true);
     }
 
+    @FXML
+    protected void onForwardFimmtan(ActionEvent actionEvent) {
+        player.seek(player.getCurrentTime().add(Duration.seconds(15)));
+    }
+
+    @FXML
+    protected void onBackFimmtan(ActionEvent actionEvent) {
+        player.seek(player.getCurrentTime().add(Duration.seconds(-15)));
+    }
+
+    @FXML
+    protected void onSkip(ActionEvent actionEvent){
+        naestaLag();
+    }
+
+    @FXML
+    protected void onBack(ActionEvent actionEvent){
+        double t = player.getCurrentTime().toSeconds();
+        if (t > 1) {
+            player.seek(player.getCurrentTime().add(Duration.seconds(-t)));
+        } else {
+            sidastaLag();
+        }
+    }
+
     /**
      * Lætur laga lista vita hvert valda lagið er. Uppfærir myndina fyrir lagið.
      */
@@ -182,6 +208,13 @@ public class ListiController  {
         // velja lag
         veljaLag();
         // spila lag
+        spilaLag();
+    }
+
+    private void sidastaLag() {
+        lagalisti.sidasti();
+        fxListView.getSelectionModel().selectIndices(lagalisti.getIndex());
+        veljaLag();
         spilaLag();
     }
 }
