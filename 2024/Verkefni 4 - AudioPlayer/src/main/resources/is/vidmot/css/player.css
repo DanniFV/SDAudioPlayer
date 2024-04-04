@@ -3,5 +3,26 @@
 }
 
 #fxVBOX {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, whitesmoke, grey);
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, Black, Grey);
+}
+
+#fxGymButton {
+    -fx-shape: "M10 0 L190 0 C200 0 200 10 200 10 L200 190 C200 200 190 200 190 200 L10 200 C0 200 0 190 0 190 L0 10 C0 0 10 0 10 0 Z";
+        -fx-background-color: transparent;
+        -fx-background-insets: 0;
+        -fx-padding: 0;
+        -fx-border-color: transparent;
+        -fx-overflow: hidden;
+}
+
+#fxStudy {
+    -fx-border-radius: 10px; /* Adjust the radius value as needed */
+    -fx-background-radius: 10px;
+}
+
+#fxGym {
+    -fx-shape: "M10 0 L190 0 C200 0 200 10 200 10 L200 190 C200 200 190 200 190 200 L10 200 C0 200 0 190 0 190 L0 10 C0 0 10 0 10 0 Z";
+    -fx-overflow: hidden;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
 }

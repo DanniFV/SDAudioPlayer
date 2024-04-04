@@ -39,7 +39,7 @@
         <children>
          <VBox prefHeight="200.0" prefWidth="100.0">
             <children>
-               <Label alignment="CENTER" prefHeight="17.0" prefWidth="201.0" text="Gym">
+               <Label alignment="CENTER" prefHeight="17.0" prefWidth="201.0" text="Gym" textFill="WHITE">
                   <font>
                      <Font name="Heiti TC Medium" size="13.0" />
                   </font>
@@ -48,7 +48,7 @@
          </VBox>
          <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
             <children>
-               <Label alignment="CENTER" prefHeight="17.0" prefWidth="202.0" text="Ehv, ekki ákveðið">
+               <Label alignment="CENTER" prefHeight="17.0" prefWidth="202.0" text="Ehv, ekki ákveðið" textFill="WHITE">
                   <font>
                      <Font name="Heiti TC Medium" size="13.0" />
                   </font>
@@ -57,7 +57,7 @@
          </VBox>
          <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
             <children>
-               <Label alignment="CENTER" prefHeight="17.0" prefWidth="234.0" text="Car Ride">
+               <Label alignment="CENTER" prefHeight="17.0" prefWidth="234.0" text="Car Ride" textFill="WHITE">
                   <font>
                      <Font name="Heiti TC Medium" size="13.0" />
                   </font>
@@ -66,16 +66,16 @@
          </VBox>
          <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <children>
-               <Label alignment="CENTER" prefHeight="17.0" prefWidth="233.0" text="Study">
+               <Label alignment="CENTER" prefHeight="17.0" prefWidth="233.0" text="Study" textFill="WHITE">
                   <font>
                      <Font name="Heiti TC Medium" size="13.0" />
                   </font>
                </Label>
             </children>
          </VBox>
-            <Button alignment="CENTER" contentDisplay="CENTER" lineSpacing="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onVeljaLista" prefHeight="30.0" prefWidth="52.0" styleClass="image-button" textAlignment="CENTER" underline="true" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <Button fx:id="fxGymButton" alignment="CENTER" contentDisplay="CENTER" lineSpacing="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onVeljaLista" prefHeight="30.0" prefWidth="52.0" styleClass="image-button" textAlignment="CENTER" underline="true" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
                 <graphic>
-                    <ImageView fitHeight="22.0" fitWidth="89.0" pickOnBounds="true" scaleX="2.0" scaleY="4.0">
+                    <ImageView fitHeight="22.0" fitWidth="89.0" pickOnBounds="true" scaleX="2.0" scaleY="4.0" style="-fx-image-radius: 25;">
                         <image>
                             <Image url="@media/gym.png" />
                         </image>
@@ -100,9 +100,9 @@
                     </ImageView>
                 </graphic>
             </Button>
-            <Button layoutX="10.0" layoutY="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onVeljaLista" prefHeight="30.0" prefWidth="90.0" styleClass="image-button" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="fxStudyButton" layoutX="10.0" layoutY="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onVeljaLista" prefHeight="30.0" prefWidth="90.0" styleClass="image-button" GridPane.columnIndex="1" GridPane.rowIndex="1">
                 <graphic>
-                    <ImageView fitHeight="22.0" fitWidth="89.0" pickOnBounds="true" scaleX="2.0" scaleY="4.0">
+                    <ImageView fx:id="fxStudy" fitHeight="22.0" fitWidth="89.0" pickOnBounds="true" scaleX="2.0" scaleY="4.0">
                         <image>
                             <Image url="@media/study.png" />
                         </image>
