@@ -84,5 +84,10 @@
             </children>
         </VBox>
       <Button alignment="CENTER" layoutX="196.0" layoutY="347.0" mnemonicParsing="false" onAction="#onHeim" prefHeight="25.0" prefWidth="209.0" text="Heim" />
+      <ImageView fx:id="fxSpin" fitHeight="60.0" fitWidth="58.0" layoutX="514.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true" styleClass="transparent-background">
+         <image>
+            <Image url="@images/MSPINcopy.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

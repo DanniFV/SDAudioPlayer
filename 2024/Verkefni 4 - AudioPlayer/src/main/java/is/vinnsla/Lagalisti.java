@@ -9,8 +9,11 @@ package is.vinnsla;
  *
  *****************************************************************************/
 
+import javafx.animation.RotateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Duration;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -74,5 +77,9 @@ public class Lagalisti {
 
     public int getIndex() {
         return index;
+    }
+
+    public void ehhspin() {
+
     }
 }

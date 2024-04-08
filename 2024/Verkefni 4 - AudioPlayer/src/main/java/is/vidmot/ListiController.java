@@ -14,6 +14,7 @@ package is.vidmot;
 import is.vinnsla.Lag;
 import is.vinnsla.Lagalistar;
 import is.vinnsla.Lagalisti;
+import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -42,11 +43,14 @@ public class ListiController  {
     protected ListView<Lag> fxListView; // lagalistinn
     @FXML
     protected ImageView fxMyndLagView;    // mynd fyrir lagið
+    @FXML
+    protected ImageView fxSpin;
 
     // vinnslan
     private Lagalisti lagalisti; // lagalistinn
     private MediaPlayer player; // ein player breyta per forritið
     private Lag validLag;       // núverandi valið lag
+
 
     /**
      * Frumstillir lagalistann og tengir hann við ListView viðmótshlut
@@ -80,6 +84,7 @@ public class ListiController  {
         veljaLag();
         // spila lagið
         spilaLag();
+
     }
 
     /**
@@ -97,6 +102,7 @@ public class ListiController  {
         } else if (player.getStatus().equals(MediaPlayer.Status.PAUSED)) {
             setjaMynd(fxPlayPauseView, PAUSE);  // uppfærðu myndina með pause
             player.play();                      // haltu áfram að spila
+            spinna();
         }
     }
 
@@ -162,6 +168,8 @@ public class ListiController  {
         setjaPlayer();
         // setja spilun í gang
         player.play();
+
+        spinna();
     }
 
     /**
@@ -217,6 +225,22 @@ public class ListiController  {
         veljaLag();
         spilaLag();
     }
+
+    public void spinna() {
+        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(2), fxSpin);
+        rotateTransition.setByAngle(360.0);
+        rotateTransition.setCycleCount(RotateTransition.INDEFINITE);
+        rotateTransition.setAutoReverse(false);
+        rotateTransition.play();
+        player.statusProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == MediaPlayer.Status.PLAYING) {
+                rotateTransition.play();
+            } else {
+                rotateTransition.stop();
+            }
+        });
+
+}
 }
 
 
