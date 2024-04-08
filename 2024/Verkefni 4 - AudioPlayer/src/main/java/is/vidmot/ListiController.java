@@ -14,11 +14,16 @@ package is.vidmot;
 import is.vinnsla.Lag;
 import is.vinnsla.Lagalistar;
 import is.vinnsla.Lagalisti;
+import javafx.animation.KeyFrame;
 import javafx.animation.RotateTransition;
+import javafx.animation.Timeline;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -37,6 +42,8 @@ public class ListiController  {
     // viðmótshlutir
     @FXML
     public ProgressBar fxProgressBar;   // progress bar fyrir spilun á lagi
+    @FXML
+    protected Slider fxSlider; // slider fyrir progress bar
     @FXML
     protected ImageView fxPlayPauseView; // mynd fyrir play/pause hnappinn
     @FXML
@@ -69,6 +76,7 @@ public class ListiController  {
         veljaLag();
         // setur upp player
         setjaPlayer();
+        sliderMagic();
     }
 
     /**
@@ -168,7 +176,8 @@ public class ListiController  {
         setjaPlayer();
         // setja spilun í gang
         player.play();
-
+        sliderMagic();
+        sliding();
         spinna();
     }
 
@@ -202,7 +211,6 @@ public class ListiController  {
         // setja listener tengingu á milli player og progress bar
         player.currentTimeProperty().addListener((observable, old, newValue) ->
                 fxProgressBar.setProgress(newValue.divide(validLag.getLengd()).toMillis()));
-
     }
 
     /**
@@ -240,7 +248,36 @@ public class ListiController  {
             }
         });
 
-}
+    }
+    public void sliderMagic() {
+        fxSlider.setMin(0);
+        fxSlider.setMax(player.getTotalDuration().toSeconds());
+
+        Timeline updateTimeline = new Timeline(
+                new KeyFrame(Duration.seconds(1.5), event -> {
+                    // Update the slider value every 3 seconds
+                    fxSlider.setValue(player.getCurrentTime().toSeconds());
+                })
+        );
+
+        // Repeat indefinitely
+        updateTimeline.setCycleCount(Timeline.INDEFINITE);
+        updateTimeline.play();
+    }
+
+    public void sliding() {
+        DoubleProperty sliderValue = new SimpleDoubleProperty(0);
+        fxSlider.valueProperty().bindBidirectional(sliderValue);
+
+        // Add event handler to the slider
+        fxSlider.setOnMouseReleased(event -> {
+            // Only seek player if the slider's value has changed
+            if (sliderValue.get() != player.getCurrentTime().toSeconds()) {
+                player.seek(Duration.seconds(sliderValue.get()));
+            }
+        });
+    }
+
 }
 
 
