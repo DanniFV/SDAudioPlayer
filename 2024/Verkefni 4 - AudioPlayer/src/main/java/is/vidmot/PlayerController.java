@@ -19,7 +19,7 @@ import javafx.scene.layout.GridPane;
 
 import java.util.Optional;
 
-public class PlayerController  {
+public class PlayerController {
 
     // fastar
     public static final String ASKRIFANDI = "Áskrifandi";
@@ -38,17 +38,18 @@ public class PlayerController  {
      * @param mouseEvent
      */
     //@FXML
+
     /**
-        protected void onVeljaLista(ActionEvent mouseEvent) {
-        // hvaða reitur var valinn
-        int i = GridPane.getRowIndex((Node) mouseEvent.getSource());
-        int j = GridPane.getColumnIndex((Node) mouseEvent.getSource());
-        // skiptum yfir í lagalistann í vinnslunni sem var valið
-        Lagalistar.setIndex(i * 2 + j);
-        // skiptum yfir í LAGALISTI view
-        ViewSwitcher.switchTo(View.LAGALISTI, false);
-        System.out.println("hi bitches");
-    }
+     * protected void onVeljaLista(ActionEvent mouseEvent) {
+     * // hvaða reitur var valinn
+     * int i = GridPane.getRowIndex((Node) mouseEvent.getSource());
+     * int j = GridPane.getColumnIndex((Node) mouseEvent.getSource());
+     * // skiptum yfir í lagalistann í vinnslunni sem var valið
+     * Lagalistar.setIndex(i * 2 + j);
+     * // skiptum yfir í LAGALISTI view
+     * ViewSwitcher.switchTo(View.LAGALISTI, false);
+     * System.out.println("hi bitches");
+     * }
      */
     @FXML
     protected void onVeljaLista(ActionEvent mouseEvent) {
@@ -66,7 +67,6 @@ public class PlayerController  {
             // Perform your operations with i and j here
             Lagalistar.setIndex(i * 2 + j);
             ViewSwitcher.switchTo(View.LAGALISTI, false);
-            System.out.println("hi bitches");
         } else {
             // Handle the case where the node is not laid out in a GridPane
             System.out.println("The source of the event is not laid out in a GridPane.");
@@ -79,12 +79,15 @@ public class PlayerController  {
      * @param actionEvent
      */
     public void onLogin(ActionEvent actionEvent) {
+        ListiController listiController = new ListiController();
         // býr til nýjan dialog með tómum áskrifanda
         AskrifandiDialog dialog = new AskrifandiDialog(new Askrifandi(ASKRIFANDI));
         // sýndu dialoginn
         Optional<Askrifandi> utkoma = dialog.showAndWait();
         // Ef fékkst svar úr dialognum setjum við nafnið á áskrifandanum í notendaviðmótið
-        utkoma.ifPresent (a -> {
-            fxAskrifandi.setText(a.getNafn());});
+        utkoma.ifPresent(a -> {
+            fxAskrifandi.setText(a.getNafn());
+        });
     }
+
 }

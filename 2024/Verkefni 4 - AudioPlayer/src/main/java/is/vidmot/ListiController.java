@@ -11,6 +11,7 @@ package is.vidmot;
  *  -- play / pause
  *  -- farið heim
  *****************************************************************************/
+import is.vinnsla.Askrifandi;
 import is.vinnsla.Lag;
 import is.vinnsla.Lagalistar;
 import is.vinnsla.Lagalisti;
@@ -19,11 +20,12 @@ import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.Slider;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -31,6 +33,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import org.controlsfx.control.action.Action;
+
+import java.util.Optional;
 
 
 public class ListiController  {
@@ -52,6 +56,10 @@ public class ListiController  {
     protected ImageView fxMyndLagView;    // mynd fyrir lagið
     @FXML
     protected ImageView fxSpin;
+    @FXML
+    protected Button fxVolumeButton;
+    @FXML
+    protected Slider fxVolumeSlider;
 
     // vinnslan
     private Lagalisti lagalisti; // lagalistinn
@@ -77,6 +85,7 @@ public class ListiController  {
         // setur upp player
         setjaPlayer();
         sliderMagic();
+
     }
 
     /**
@@ -211,6 +220,7 @@ public class ListiController  {
         // setja listener tengingu á milli player og progress bar
         player.currentTimeProperty().addListener((observable, old, newValue) ->
                 fxProgressBar.setProgress(newValue.divide(validLag.getLengd()).toMillis()));
+
     }
 
     /**
@@ -276,6 +286,11 @@ public class ListiController  {
                 player.seek(Duration.seconds(sliderValue.get()));
             }
         });
+    }
+
+    public void onVolume(ActionEvent actionEvent) {
+        fxVolumeSlider.setVisible(true);
+        fxVolumeSlider.setDisable(false);
     }
 
 }

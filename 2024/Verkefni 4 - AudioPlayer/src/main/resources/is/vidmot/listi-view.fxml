@@ -16,9 +16,13 @@
                 <ImageView fx:id="fxMyndLagView" fitHeight="400.0" fitWidth="600.0" layoutX="-1.0" />
         <VBox alignment="CENTER" layoutY="-1.0" prefHeight="336.0" prefWidth="600.0" spacing="10.0">
             <children>
-                <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="241.0" prefWidth="414.0" spacing="10">
+                <HBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="241.0" prefWidth="583.0" spacing="10">
                     <children>
-                        <ListView fx:id="fxListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onValidLag" prefHeight="241.0" prefWidth="295.0" />
+                        <ListView fx:id="fxListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onValidLag" prefHeight="241.0" prefWidth="295.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="26.0" />
+                     </HBox.margin></ListView>
+                  <Slider fx:id="fxVolumeSlider" disable="true" maxHeight="-Infinity" minHeight="-Infinity" orientation="VERTICAL" prefHeight="86.0" prefWidth="16.0" visible="false" />
                     </children>
                 </HBox>
                 <VBox prefHeight="45.0" prefWidth="209.0">
@@ -76,7 +80,11 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Button fx:id="fxVolumeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onVolume" prefHeight="25.0" prefWidth="25.0" text="Button" />
                             </children>
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
                         </HBox>
                     </children>
                <VBox.margin>

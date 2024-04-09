@@ -42,8 +42,15 @@ public class Lagalisti {
             while (scanner.hasNextLine()) {
 
                 lina = scanner.nextLine().split(" ");
+                try {
                 listi.add(new Lag (lina[0], lina [3], lina[1], Integer.parseInt(lina[2])));
-            }
+            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+                    // Handle the exception
+                    e.printStackTrace();
+                }
+                }
+
+
             scanner.close();
         }catch (RuntimeException e) {
             e.printStackTrace();
