@@ -37,7 +37,7 @@ import org.controlsfx.control.action.Action;
 import java.util.Optional;
 
 
-public class ListiController  {
+public class ListiController {
 
     // fastar
     private final String PAUSE = "images/pause.png";
@@ -85,6 +85,8 @@ public class ListiController  {
         // setur upp player
         setjaPlayer();
         sliderMagic();
+        breytaVolume();
+        fxVolumeSlider.setValue(50.0);
 
     }
 
@@ -149,12 +151,12 @@ public class ListiController  {
     }
 
     @FXML
-    protected void onSkip(ActionEvent actionEvent){
+    protected void onSkip(ActionEvent actionEvent) {
         naestaLag();
     }
 
     @FXML
-    protected void onBack(ActionEvent actionEvent){
+    protected void onBack(ActionEvent actionEvent) {
         double t = player.getCurrentTime().toSeconds();
         if (t > 1) {
             player.seek(player.getCurrentTime().add(Duration.seconds(-t)));
@@ -198,7 +200,7 @@ public class ListiController  {
      */
 
     private void setjaMynd(ImageView fxImageView, String nafnMynd) {
-        System.out.println ("nafn á mynd "+nafnMynd);
+        System.out.println("nafn á mynd " + nafnMynd);
         fxImageView.setImage(new Image(getClass().getResource(nafnMynd).toExternalForm()));
     }
 
@@ -228,7 +230,7 @@ public class ListiController  {
      */
     private void naestaLag() {
         // setja valið lag sem næsta lag á núverandi lagalista
-         lagalisti.naesti();
+        lagalisti.naesti();
         // uppfæra ListView til samræmis, þ.e. að næsta lag sé valið
         fxListView.getSelectionModel().selectIndices(lagalisti.getIndex());
         // velja lag
@@ -259,6 +261,7 @@ public class ListiController  {
         });
 
     }
+
     public void sliderMagic() {
         fxSlider.setMin(0);
         fxSlider.setMax(player.getTotalDuration().toSeconds());
@@ -289,17 +292,25 @@ public class ListiController  {
     }
 
     public void onVolume(ActionEvent actionEvent) {
-        fxVolumeSlider.setVisible(true);
-        fxVolumeSlider.setDisable(false);
+        if (fxVolumeSlider.isVisible()) {
+            fxVolumeSlider.setDisable(true);
+            fxVolumeSlider.setVisible(false);
+        } else {
+            fxVolumeSlider.setVisible(true);
+            fxVolumeSlider.setDisable(false);
+        }
         fxVolumeSlider.setMin(0);
         fxVolumeSlider.setMax(100);
-        fxVolumeSlider.setValue(50);
+    }
 
+    public void breytaVolume() {
+        fxVolumeSlider.valueProperty().addListener((obs, oldValue, newValue) -> {
+            double volume = newValue.doubleValue() / 100.0; // Convert slider value to a range from 0 to 1
+            player.setVolume(volume); // Set the volume of the player
+        });
 
 
     }
-
-
 }
 
 
