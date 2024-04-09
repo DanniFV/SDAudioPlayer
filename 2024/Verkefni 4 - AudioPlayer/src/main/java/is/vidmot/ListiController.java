@@ -291,7 +291,14 @@ public class ListiController  {
     public void onVolume(ActionEvent actionEvent) {
         fxVolumeSlider.setVisible(true);
         fxVolumeSlider.setDisable(false);
+        fxVolumeSlider.setMin(0);
+        fxVolumeSlider.setMax(100);
+        fxVolumeSlider.setValue(50);
+
+
+
     }
+
 
 }
 

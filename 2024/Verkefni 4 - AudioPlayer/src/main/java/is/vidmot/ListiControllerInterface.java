@@ -67,4 +67,5 @@ public interface ListiControllerInterface {
      * Næsta lag er spilað. Kallað á þessa aðferð þegar fyrra lag á listanum endar
      */
     void naestaLag();
+
 }
